@@ -1,0 +1,2001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FAT LAB Programs – Web Technologies</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; background: #f0f2f5; color: #222; }
+  .page-title { background: #1a252f; color: #fff; padding: 20px 30px; font-size: 26px; }
+  .page-title span { color: #f39c12; }
+  .toc { background: #fff; margin: 20px; padding: 20px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,.1); }
+  .toc h2 { margin-bottom: 12px; color: #1a252f; }
+  .toc ol { padding-left: 20px; line-height: 2; }
+  .toc a { color: #2980b9; text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .program { background: #fff; margin: 20px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,.1); overflow: hidden; }
+  .prog-header { background: #2c3e50; color: #fff; padding: 14px 20px; font-size: 18px; font-weight: bold; }
+  .prog-header.optional { background: #d35400; }
+  .prog-body { padding: 20px; }
+  .demo-box { border: 1px solid #ddd; border-radius: 6px; padding: 16px; margin-bottom: 16px; background: #fafafa; }
+  pre { background: #1e1e1e; color: #d4d4d4; padding: 16px; border-radius: 6px; overflow-x: auto; font-size: 13px; line-height: 1.6; margin-top: 10px; white-space: pre-wrap; }
+  table { border-collapse: collapse; width: 100%; margin: 8px 0; }
+  th { background: #2c3e50; color: #fff; padding: 9px 12px; }
+  td { border: 1px solid #bbb; padding: 8px 12px; text-align: center; }
+  tr:nth-child(even) td { background: #f7f7f7; }
+  label { display: block; margin: 6px 0; cursor: pointer; }
+  input[type=text], input[type=number], input[type=password], select {
+    padding: 7px 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; margin: 4px 0;
+  }
+  button {
+    padding: 8px 18px; background: #2c3e50; color: #fff; border: none;
+    border-radius: 4px; cursor: pointer; font-size: 14px; margin: 4px;
+  }
+  button:hover { background: #3d5166; }
+  .btn-green { background: #27ae60; }
+  .btn-green:hover { background: #1e8449; }
+  .btn-red { background: #c0392b; }
+  .btn-red:hover { background: #a93226; }
+  .btn-orange { background: #e67e22; }
+  .result-box { margin-top: 10px; padding: 10px 14px; background: #eaf4fb; border-left: 4px solid #2980b9; border-radius: 4px; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<div class="page-title">FAT LAB Programs – <span>Web Technologies (HTML, CSS, JavaScript)</span></div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <h2>Table of Contents</h2>
+  <ol>
+    <li><a href="#p1">Tree Data Table</a></li>
+    <li><a href="#p2">Light Bulb Order Form</a></li>
+    <li><a href="#p3">Nested Car Lists</a></li>
+    <li><a href="#p4">row_averages() Function</a></li>
+    <li><a href="#p5">reverser() Function</a></li>
+    <li><a href="#p6">Fruit Checkout with Sales Tax</a></li>
+    <li><a href="#p7">Income Tax Calculator</a></li>
+    <li><a href="#p8">MongoDB Employee Collection</a></li>
+    <li><a href="#p11">6×6 Sudoku Solver</a></li>
+    <li><a href="#p12">Meals & Foods Table</a></li>
+    <li><a href="#p13">Popcorn Sales Order Form</a></li>
+    <li><a href="#p14">Color Pattern</a></li>
+    <li><a href="#p15">JavaScript Calculator</a></li>
+    <li><a href="#p16">counter() Function</a></li>
+    <li><a href="#p17">Password Validation Form</a></li>
+    <li style="color:#d35400"><a href="#p9">OPTIONAL – ES6 Weather App with Graph</a></li>
+    <li style="color:#d35400"><a href="#p10">OPTIONAL – Node.js EMI Calculator</a></li>
+    <li style="color:#d35400"><a href="#p18">OPTIONAL – Weather App (Async/Await + Graph)</a></li>
+  </ol>
+</div>
+
+<!-- ============================= PROGRAM 1 ============================= -->
+<div class="program" id="p1">
+  <div class="prog-header">Program 1 – Tree Data Table</div>
+  <div class="prog-body">
+    <div class="demo-box">
+      <table>
+        <tr><th></th><th>Pine</th><th>Maple</th><th>Oak</th><th>Fir</th></tr>
+        <tr><td><b>Average Height</b></td><td>40–80 ft</td><td>50–75 ft</td><td>60–100 ft</td><td>50–90 ft</td></tr>
+        <tr><td><b>Average Width</b></td><td>15–25 ft</td><td>20–35 ft</td><td>25–50 ft</td><td>20–30 ft</td></tr>
+        <tr><td><b>Typical Life Span</b></td><td>100–200 yrs</td><td>200–300 yrs</td><td>200–500 yrs</td><td>150–300 yrs</td></tr>
+        <tr><td><b>Leaf Type</b></td><td>Needle</td><td>Broadleaf</td><td>Broadleaf</td><td>Needle</td></tr>
+      </table>
+    </div>
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Tree Data Table&lt;/title&gt;
+  &lt;style&gt;
+    table { border-collapse: collapse; width: 80%; margin: 20px auto; }
+    th, td { border: 1px solid #999; padding: 10px; text-align: center; }
+    th { background: #2c3e50; color: white; }
+    tr:nth-child(even) td { background: #f2f2f2; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2 style="text-align:center"&gt;Tree Characteristics&lt;/h2&gt;
+  &lt;table&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;/th&gt;&lt;th&gt;Pine&lt;/th&gt;&lt;th&gt;Maple&lt;/th&gt;&lt;th&gt;Oak&lt;/th&gt;&lt;th&gt;Fir&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;b&gt;Average Height&lt;/b&gt;&lt;/td&gt;
+      &lt;td&gt;40–80 ft&lt;/td&gt;&lt;td&gt;50–75 ft&lt;/td&gt;&lt;td&gt;60–100 ft&lt;/td&gt;&lt;td&gt;50–90 ft&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;b&gt;Average Width&lt;/b&gt;&lt;/td&gt;
+      &lt;td&gt;15–25 ft&lt;/td&gt;&lt;td&gt;20–35 ft&lt;/td&gt;&lt;td&gt;25–50 ft&lt;/td&gt;&lt;td&gt;20–30 ft&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;b&gt;Typical Life Span&lt;/b&gt;&lt;/td&gt;
+      &lt;td&gt;100–200 yrs&lt;/td&gt;&lt;td&gt;200–300 yrs&lt;/td&gt;&lt;td&gt;200–500 yrs&lt;/td&gt;&lt;td&gt;150–300 yrs&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;b&gt;Leaf Type&lt;/b&gt;&lt;/td&gt;
+      &lt;td&gt;Needle&lt;/td&gt;&lt;td&gt;Broadleaf&lt;/td&gt;&lt;td&gt;Broadleaf&lt;/td&gt;&lt;td&gt;Needle&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+  </div>
+</div>
+
+<!-- ============================= PROGRAM 2 ============================= -->
+<div class="program" id="p2">
+  <div class="prog-header">Program 2 – Light Bulb Order Form</div>
+  <div class="prog-body">
+    <div class="demo-box">
+      <label><b>Your Name:</b></label>
+      <input type="text" id="p2name" placeholder="Enter your name" style="width:220px">
+      <p style="margin:10px 0 6px"><b>Select Items:</b></p>
+      <label><input type="checkbox"> Four 25-watt light bulbs for $2.39</label>
+      <label><input type="checkbox"> Eight 25-watt light bulbs for $4.29</label>
+      <label><input type="checkbox"> Four 25-watt long-life light bulbs for $3.95</label>
+      <label><input type="checkbox"> Eight 25-watt long-life light bulbs for $7.49</label>
+      <p style="margin:10px 0 6px"><b>Payment Method:</b></p>
+      <label><input type="radio" name="p2pay"> Visa</label>
+      <label><input type="radio" name="p2pay"> Master Card</label>
+      <label><input type="radio" name="p2pay"> Discover</label>
+    </div>
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Light Bulb Order Form&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;Light Bulb Order Form&lt;/h2&gt;
+  &lt;form&gt;
+    &lt;label&gt;Your Name: &lt;input type="text" name="username"&gt;&lt;/label&gt;
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;b&gt;Select Items:&lt;/b&gt;&lt;br&gt;
+    &lt;label&gt;&lt;input type="checkbox" name="item1" value="2.39"&gt;
+      Four 25-watt light bulbs for $2.39&lt;/label&gt;&lt;br&gt;
+    &lt;label&gt;&lt;input type="checkbox" name="item2" value="4.29"&gt;
+      Eight 25-watt light bulbs for $4.29&lt;/label&gt;&lt;br&gt;
+    &lt;label&gt;&lt;input type="checkbox" name="item3" value="3.95"&gt;
+      Four 25-watt long-life light bulbs for $3.95&lt;/label&gt;&lt;br&gt;
+    &lt;label&gt;&lt;input type="checkbox" name="item4" value="7.49"&gt;
+      Eight 25-watt long-life light bulbs for $7.49&lt;/label&gt;
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;b&gt;Payment Method:&lt;/b&gt;&lt;br&gt;
+    &lt;label&gt;&lt;input type="radio" name="payment" value="visa"&gt; Visa&lt;/label&gt;&lt;br&gt;
+    &lt;label&gt;&lt;input type="radio" name="payment" value="mc"&gt; Master Card&lt;/label&gt;&lt;br&gt;
+    &lt;label&gt;&lt;input type="radio" name="payment" value="discover"&gt; Discover&lt;/label&gt;
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;input type="submit" value="Place Order"&gt;
+    &lt;input type="reset" value="Clear"&gt;
+  &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+  </div>
+</div>
+
+<!-- ============================= PROGRAM 3 ============================= -->
+<div class="program" id="p3">
+  <div class="prog-header">Program 3 – Nested Ordered List of Cars</div>
+  <div class="prog-body">
+    <div class="demo-box">
+      <style>
+        .compact-bg { background: pink; padding: 4px 8px; }
+        .midsize-bg { background: lightblue; padding: 4px 8px; }
+        .sports-bg  { background: #ffaaaa; padding: 4px 8px; }
+        .car-outer { list-style-type: upper-roman; padding-left: 20px; }
+        .car-middle { list-style-type: upper-alpha; padding-left: 20px; }
+        .car-inner { list-style-type: decimal; padding-left: 20px; }
+      </style>
+      <ol class="car-outer">
+        <li class="compact-bg"><b>Compact</b>
+          <ol class="car-middle compact-bg">
+            <li>Two Door
+              <ol class="car-inner compact-bg">
+                <li>Honda Civic LX</li><li>Toyota Corolla CE</li><li>Hyundai Elantra SE</li>
+              </ol>
+            </li>
+            <li>Four Door
+              <ol class="car-inner compact-bg">
+                <li>Ford Focus S</li><li>Chevrolet Cruze LS</li><li>Nissan Versa S</li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li class="midsize-bg"><b>Midsize</b>
+          <ol class="car-middle midsize-bg">
+            <li>Two Door
+              <ol class="car-inner midsize-bg">
+                <li>Honda Accord EX</li><li>Toyota Camry SE</li><li>Nissan Altima SR</li>
+              </ol>
+            </li>
+            <li>Four Door
+              <ol class="car-inner midsize-bg">
+                <li>Hyundai Sonata GLS</li><li>Chevrolet Malibu LT</li><li>Ford Fusion SE</li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li class="sports-bg"><b>Sports</b>
+          <ol class="car-middle sports-bg">
+            <li>Coupe
+              <ol class="car-inner sports-bg">
+                <li>Ford Mustang GT</li><li>Chevrolet Camaro SS</li><li>Dodge Challenger R/T</li>
+              </ol>
+            </li>
+            <li>Convertible
+              <ol class="car-inner sports-bg">
+                <li>Mazda MX-5 Miata</li><li>BMW 4 Series Conv.</li><li>Ford Mustang Conv.</li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+      </ol>
+    </div>
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Nested Car Lists&lt;/title&gt;
+  &lt;style&gt;
+    .compact-bg { background: pink;      padding: 4px 8px; }
+    .midsize-bg { background: lightblue; padding: 4px 8px; }
+    .sports-bg  { background: #ffaaaa;   padding: 4px 8px; }
+    .car-outer  { list-style-type: upper-roman; padding-left: 20px; }
+    .car-middle { list-style-type: upper-alpha;  padding-left: 20px; }
+    .car-inner  { list-style-type: decimal;      padding-left: 20px; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;Car Categories&lt;/h2&gt;
+  &lt;ol class="car-outer"&gt;
+
+    &lt;li class="compact-bg"&gt;Compact
+      &lt;ol class="car-middle compact-bg"&gt;
+        &lt;li&gt;Two Door
+          &lt;ol class="car-inner compact-bg"&gt;
+            &lt;li&gt;Honda Civic LX&lt;/li&gt;
+            &lt;li&gt;Toyota Corolla CE&lt;/li&gt;
+            &lt;li&gt;Hyundai Elantra SE&lt;/li&gt;
+          &lt;/ol&gt;
+        &lt;/li&gt;
+        &lt;li&gt;Four Door
+          &lt;ol class="car-inner compact-bg"&gt;
+            &lt;li&gt;Ford Focus S&lt;/li&gt;
+            &lt;li&gt;Chevrolet Cruze LS&lt;/li&gt;
+            &lt;li&gt;Nissan Versa S&lt;/li&gt;
+          &lt;/ol&gt;
+        &lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/li&gt;
+
+    &lt;li class="midsize-bg"&gt;Midsize
+      &lt;ol class="car-middle midsize-bg"&gt;
+        &lt;li&gt;Two Door
+          &lt;ol class="car-inner midsize-bg"&gt;
+            &lt;li&gt;Honda Accord EX&lt;/li&gt;
+            &lt;li&gt;Toyota Camry SE&lt;/li&gt;
+            &lt;li&gt;Nissan Altima SR&lt;/li&gt;
+          &lt;/ol&gt;
+        &lt;/li&gt;
+        &lt;li&gt;Four Door
+          &lt;ol class="car-inner midsize-bg"&gt;
+            &lt;li&gt;Hyundai Sonata GLS&lt;/li&gt;
+            &lt;li&gt;Chevrolet Malibu LT&lt;/li&gt;
+            &lt;li&gt;Ford Fusion SE&lt;/li&gt;
+          &lt;/ol&gt;
+        &lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/li&gt;
+
+    &lt;li class="sports-bg"&gt;Sports
+      &lt;ol class="car-middle sports-bg"&gt;
+        &lt;li&gt;Coupe
+          &lt;ol class="car-inner sports-bg"&gt;
+            &lt;li&gt;Ford Mustang GT&lt;/li&gt;
+            &lt;li&gt;Chevrolet Camaro SS&lt;/li&gt;
+            &lt;li&gt;Dodge Challenger R/T&lt;/li&gt;
+          &lt;/ol&gt;
+        &lt;/li&gt;
+        &lt;li&gt;Convertible
+          &lt;ol class="car-inner sports-bg"&gt;
+            &lt;li&gt;Mazda MX-5 Miata&lt;/li&gt;
+            &lt;li&gt;BMW 4 Series Convertible&lt;/li&gt;
+            &lt;li&gt;Ford Mustang Convertible&lt;/li&gt;
+          &lt;/ol&gt;
+        &lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/li&gt;
+
+  &lt;/ol&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+  </div>
+</div>
+
+<!-- ============================= PROGRAM 4 ============================= -->
+<div class="program" id="p4">
+  <div class="prog-header">Program 4 – JavaScript: row_averages()</div>
+  <div class="prog-body">
+    <div class="demo-box">
+      <p>Test the <b>row_averages</b> function with two datasets:</p>
+      <button onclick="runRowAvg()">▶ Run Tests</button>
+      <div class="result-box" id="avgOut" style="display:none"></div>
+    </div>
+<pre>&lt;!-- row_averages.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;row_averages Test&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;row_averages Function Test&lt;/h2&gt;
+  &lt;button onclick="runTests()"&gt;Run Tests&lt;/button&gt;
+  &lt;pre id="output"&gt;&lt;/pre&gt;
+  &lt;script src="row_averages.js"&gt;&lt;/script&gt;
+  &lt;script&gt;
+    function runTests() {
+      const out = document.getElementById('output');
+      const t1 = row_averages([[1,2,3],[4,5,6],[7,8,9]]);
+      const t2 = row_averages([[10,20,30],[5,15],[100,200,300,400]]);
+      out.textContent =
+        'Dataset 1: [[1,2,3],[4,5,6],[7,8,9]]\n' +
+        'Averages  : [' + t1.join(', ') + ']\n\n' +
+        'Dataset 2: [[10,20,30],[5,15],[100,200,300,400]]\n' +
+        'Averages  : [' + t2.join(', ') + ']';
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+/* ---- row_averages.js ---- */
+function row_averages(matrix) {
+  return matrix.map(function(row) {
+    var sum = 0;
+    for (var i = 0; i &lt; row.length; i++) sum += row[i];
+    return sum / row.length;
+  });
+}</pre>
+    <script>
+      function row_averages(matrix) {
+        return matrix.map(function(row) {
+          var sum = 0;
+          for (var i = 0; i < row.length; i++) sum += row[i];
+          return sum / row.length;
+        });
+      }
+      function runRowAvg() {
+        const t1 = row_averages([[1,2,3],[4,5,6],[7,8,9]]);
+        const t2 = row_averages([[10,20,30],[5,15],[100,200,300,400]]);
+        const el = document.getElementById('avgOut');
+        el.style.display = 'block';
+        el.innerHTML =
+          '<b>Dataset 1:</b> [[1,2,3],[4,5,6],[7,8,9]]<br>Averages: [' + t1.join(', ') + ']<br><br>' +
+          '<b>Dataset 2:</b> [[10,20,30],[5,15],[100,200,300,400]]<br>Averages: [' + t2.join(', ') + ']';
+      }
+    </script>
+  </div>
+</div>
+
+<!-- ============================= PROGRAM 5 ============================= -->
+<div class="program" id="p5">
+  <div class="prog-header">Program 5 – JavaScript: reverser()</div>
+  <div class="prog-body">
+    <div class="demo-box">
+      <label><b>Enter a number:</b></label>
+      <input type="number" id="revIn" value="12345" style="width:140px">
+      <button onclick="runReverser()">▶ Reverse</button>
+      <div class="result-box" id="revOut" style="display:none"></div>
+    </div>
+<pre>&lt;!-- reverser.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;reverser Test&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;reverser Function Test&lt;/h2&gt;
+  Enter number: &lt;input type="number" id="num"&gt;
+  &lt;button onclick="runTest()"&gt;Reverse&lt;/button&gt;
+  &lt;p id="output"&gt;&lt;/p&gt;
+  &lt;script src="reverser.js"&gt;&lt;/script&gt;
+  &lt;script&gt;
+    function runTest() {
+      var n = parseInt(document.getElementById('num').value);
+      document.getElementById('output').textContent =
+        'reverser(' + n + ') = ' + reverser(n);
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+/* ---- reverser.js ---- */
+function reverser(n) {
+  var isNeg = n &lt; 0;
+  var rev = String(Math.abs(n)).split('').reverse().join('');
+  return (isNeg ? -1 : 1) * parseInt(rev, 10);
+}
+
+/* Tests:
+   reverser(12345)  →  54321
+   reverser(-9870)  →  -789
+   reverser(1000)   →  1
+*/</pre>
+    <script>
+      function reverser(n) {
+        var isNeg = n < 0;
+        var rev = String(Math.abs(n)).split('').reverse().join('');
+        return (isNeg ? -1 : 1) * parseInt(rev, 10);
+      }
+      function runReverser() {
+        var n = parseInt(document.getElementById('revIn').value);
+        var el = document.getElementById('revOut');
+        el.style.display = 'block';
+        el.textContent = 'reverser(' + n + ') = ' + reverser(n);
+      }
+    </script>
+  </div>
+</div>
+
+<!-- ============================= PROGRAM 6 ============================= -->
+<div class="program" id="p6">
+  <div class="prog-header">Program 6 – Fruit Checkout with Sales Tax</div>
+  <div class="prog-body">
+    <div class="demo-box">
+      <b>Select fruits:</b>
+      <label><input type="checkbox" id="cb_apple"  onclick="updateFruit(this, 0.59)"> 🍎 Apple – $0.59 each</label>
+      <label><input type="checkbox" id="cb_orange" onclick="updateFruit(this, 0.49)"> 🍊 Orange – $0.49 each</label>
+      <label><input type="checkbox" id="cb_banana" onclick="updateFruit(this, 0.39)"> 🍌 Banana – $0.39 each</label>
+      <br>
+      <button class="btn-green" onclick="return submitFruit()">Submit Order</button>
+    </div>
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Fruit Checkout&lt;/title&gt;
+  &lt;script&gt;
+    var total = 0;
+
+    function updateTotal(cb, price) {
+      if (cb.checked) {
+        total += price;
+      } else {
+        total -= price;
+      }
+    }
+
+    function submitOrder() {
+      var withTax = total * 1.05;
+      alert('Your total cost is $' + withTax.toFixed(2));
+      return false;
+    }
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;Fruit Order&lt;/h2&gt;
+  &lt;form onsubmit="return submitOrder()"&gt;
+    &lt;label&gt;
+      &lt;input type="checkbox" onclick="updateTotal(this, 0.59)"&gt;
+      Apple – $0.59
+    &lt;/label&gt;&lt;br&gt;
+    &lt;label&gt;
+      &lt;input type="checkbox" onclick="updateTotal(this, 0.49)"&gt;
+      Orange – $0.49
+    &lt;/label&gt;&lt;br&gt;
+    &lt;label&gt;
+      &lt;input type="checkbox" onclick="updateTotal(this, 0.39)"&gt;
+      Banana – $0.39
+    &lt;/label&gt;&lt;br&gt;&lt;br&gt;
+    &lt;input type="submit" value="Submit Order"&gt;
+  &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    <script>
+      var fruitTotal = 0;
+      function updateFruit(cb, price) {
+        fruitTotal += cb.checked ? price : -price;
+      }
+      function submitFruit() {
+        alert('Your total cost is $' + (fruitTotal * 1.05).toFixed(2));
+        return false;
+      }
+    </script>
+  </div>
+</div>
+
+<!-- ============================= PROGRAM 7 ============================= -->
+<div class="program" id="p7">
+  <div class="prog-header">Program 7 – Income Tax Calculator</div>
+  <div class="prog-body">
+    <div class="demo-box">
+      <style>
+        .tax-wrap { border: 2px solid #c0392b; border-radius: 6px; overflow: hidden; max-width: 480px; }
+        .tax-title { background: #c0392b; color: white; text-align: center; padding: 10px; font-size: 16px; font-weight: bold; }
+        .tax-body { padding: 16px; }
+        .tax-row { display: grid; grid-template-columns: 180px 1fr; align-items: center; gap: 8px; margin: 8px 0; }
+        .tax-row label { font-weight: bold; font-size: 13px; }
+        .tax-res th { background: #c0392b; }
+      </style>
+      <div class="tax-wrap">
+        <div class="tax-title">INCOME TAX CALCULATOR</div>
+        <div class="tax-body">
+          <div class="tax-row">
+            <label>Assessment Year:</label>
+            <select id="t_ay"><option>2024-25</option><option>2023-24</option><option>2022-23</option></select>
+          </div>
+          <div class="tax-row">
+            <label>Tax Payer:</label>
+            <select id="t_tp"><option>Individual</option><option>HUF</option><option>Firm</option></select>
+          </div>
+          <div class="tax-row">
+            <label>Gender:</label>
+            <select id="t_gen"><option>Male</option><option>Female</option><option>Senior Citizen (60+)</option><option>Super Senior (80+)</option></select>
+          </div>
+          <div class="tax-row">
+            <label>Residential Status:</label>
+            <select id="t_rs"><option>Resident</option><option>Non-Resident</option></select>
+          </div>
+          <div class="tax-row">
+            <label>Net Taxable Income (₹):</label>
+            <input type="number" id="t_income" placeholder="e.g. 800000" style="width:160px">
+          </div>
+          <br>
+          <button onclick="calcIncomeTax()" class="btn-red">Calculate</button>
+          <button onclick="resetTax()">Reset</button>
+          <div id="t_result"></div>
+        </div>
+      </div>
+    </div>
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Income Tax Calculator&lt;/title&gt;
+  &lt;style&gt;
+    body { font-family: Arial; max-width: 500px; margin: 20px auto; }
+    .header { background: #c0392b; color: white; padding: 12px; text-align: center; font-size: 18px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { border: 1px solid #ccc; padding: 8px; }
+    th { background: #c0392b; color: white; }
+    label { font-weight: bold; }
+    select, input { padding: 6px; width: 100%; margin: 4px 0 10px; }
+    button { padding: 8px 20px; margin-right: 8px; cursor: pointer; }
+    .calc-btn { background: #c0392b; color: white; border: none; border-radius: 4px; }
+  &lt;/style&gt;
+  &lt;script&gt;
+    function calcIncomeTax() {
+      var income = parseFloat(document.getElementById('income').value) || 0;
+      var gen    = document.getElementById('gen').value;
+      var tax = 0;
+
+      // Old Regime slabs (2024-25)
+      if (gen === 'Senior Citizen (60+)') {
+        if      (income &lt;= 300000)  tax = 0;
+        else if (income &lt;= 500000)  tax = (income - 300000) * 0.05;
+        else if (income &lt;= 1000000) tax = 10000 + (income - 500000) * 0.20;
+        else                         tax = 110000 + (income - 1000000) * 0.30;
+      } else if (gen === 'Super Senior (80+)') {
+        if      (income &lt;= 500000)  tax = 0;
+        else if (income &lt;= 1000000) tax = (income - 500000) * 0.20;
+        else                         tax = 100000 + (income - 1000000) * 0.30;
+      } else {
+        if      (income &lt;= 250000)  tax = 0;
+        else if (income &lt;= 500000)  tax = (income - 250000) * 0.05;
+        else if (income &lt;= 1000000) tax = 12500 + (income - 500000) * 0.20;
+        else                         tax = 112500 + (income - 1000000) * 0.30;
+      }
+
+      // 87A Rebate
+      if (income &lt;= 500000) tax = 0;
+
+      var surcharge = 0;
+      if      (income &gt; 10000000) surcharge = tax * 0.15;
+      else if (income &gt; 5000000)  surcharge = tax * 0.10;
+
+      var cess  = (tax + surcharge) * 0.04;
+      var total = tax + surcharge + cess;
+
+      document.getElementById('result').innerHTML =
+        '&lt;table&gt;&lt;tr&gt;&lt;th&gt;Component&lt;/th&gt;&lt;th&gt;Amount (₹)&lt;/th&gt;&lt;/tr&gt;' +
+        '&lt;tr&gt;&lt;td&gt;Income Tax&lt;/td&gt;&lt;td&gt;' + tax.toFixed(2) + '&lt;/td&gt;&lt;/tr&gt;' +
+        '&lt;tr&gt;&lt;td&gt;Surcharge&lt;/td&gt;&lt;td&gt;' + surcharge.toFixed(2) + '&lt;/td&gt;&lt;/tr&gt;' +
+        '&lt;tr&gt;&lt;td&gt;Health &amp; Education Cess @4%&lt;/td&gt;&lt;td&gt;' + cess.toFixed(2) + '&lt;/td&gt;&lt;/tr&gt;' +
+        '&lt;tr&gt;&lt;td&gt;&lt;b&gt;Total Tax Liability&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;' + total.toFixed(2) + '&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;';
+    }
+
+    function resetTax() {
+      document.getElementById('income').value = '';
+      document.getElementById('result').innerHTML = '';
+    }
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="header"&gt;INCOME TAX CALCULATOR&lt;/div&gt;
+  &lt;label&gt;Assessment Year:&lt;/label&gt;
+  &lt;select id="ay"&gt;&lt;option&gt;2024-25&lt;/option&gt;&lt;option&gt;2023-24&lt;/option&gt;&lt;/select&gt;
+  &lt;label&gt;Tax Payer:&lt;/label&gt;
+  &lt;select id="tp"&gt;&lt;option&gt;Individual&lt;/option&gt;&lt;option&gt;HUF&lt;/option&gt;&lt;/select&gt;
+  &lt;label&gt;Gender:&lt;/label&gt;
+  &lt;select id="gen"&gt;
+    &lt;option&gt;Male&lt;/option&gt;&lt;option&gt;Female&lt;/option&gt;
+    &lt;option&gt;Senior Citizen (60+)&lt;/option&gt;&lt;option&gt;Super Senior (80+)&lt;/option&gt;
+  &lt;/select&gt;
+  &lt;label&gt;Residential Status:&lt;/label&gt;
+  &lt;select id="rs"&gt;&lt;option&gt;Resident&lt;/option&gt;&lt;option&gt;Non-Resident&lt;/option&gt;&lt;/select&gt;
+  &lt;label&gt;Net Taxable Income (₹):&lt;/label&gt;
+  &lt;input type="number" id="income" placeholder="e.g. 800000"&gt;
+  &lt;button class="calc-btn" onclick="calcIncomeTax()"&gt;Calculate&lt;/button&gt;
+  &lt;button onclick="resetTax()"&gt;Reset&lt;/button&gt;
+  &lt;div id="result"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    <script>
+      function calcIncomeTax() {
+        var income = parseFloat(document.getElementById('t_income').value) || 0;
+        var gen    = document.getElementById('t_gen').value;
+        var tax = 0;
+        if (gen === 'Senior Citizen (60+)') {
+          if      (income <= 300000)  tax = 0;
+          else if (income <= 500000)  tax = (income - 300000) * 0.05;
+          else if (income <= 1000000) tax = 10000 + (income - 500000) * 0.20;
+          else                         tax = 110000 + (income - 1000000) * 0.30;
+        } else if (gen === 'Super Senior (80+)') {
+          if      (income <= 500000)  tax = 0;
+          else if (income <= 1000000) tax = (income - 500000) * 0.20;
+          else                         tax = 100000 + (income - 1000000) * 0.30;
+        } else {
+          if      (income <= 250000)  tax = 0;
+          else if (income <= 500000)  tax = (income - 250000) * 0.05;
+          else if (income <= 1000000) tax = 12500 + (income - 500000) * 0.20;
+          else                         tax = 112500 + (income - 1000000) * 0.30;
+        }
+        if (income <= 500000) tax = 0;
+        var surcharge = 0;
+        if      (income > 10000000) surcharge = tax * 0.15;
+        else if (income > 5000000)  surcharge = tax * 0.10;
+        var cess  = (tax + surcharge) * 0.04;
+        var total = tax + surcharge + cess;
+        document.getElementById('t_result').innerHTML =
+          '<br><table class="tax-res"><tr><th>Component</th><th>Amount (₹)</th></tr>' +
+          '<tr><td>Income Tax</td><td>' + tax.toFixed(2) + '</td></tr>' +
+          '<tr><td>Surcharge</td><td>' + surcharge.toFixed(2) + '</td></tr>' +
+          '<tr><td>Health & Education Cess @4%</td><td>' + cess.toFixed(2) + '</td></tr>' +
+          '<tr><td><b>Total Tax Liability</b></td><td><b>' + total.toFixed(2) + '</b></td></tr></table>';
+      }
+      function resetTax() {
+        document.getElementById('t_income').value = '';
+        document.getElementById('t_result').innerHTML = '';
+      }
+    </script>
+  </div>
+</div>
+
+<!-- ============================= PROGRAM 8 ============================= -->
+<div class="program" id="p8">
+  <div class="prog-header">Program 8 – MongoDB Employee Collection</div>
+  <div class="prog-body">
+    <div class="demo-box">
+      <p>MongoDB queries for the employee collection (run in Mongo Shell / Compass):</p>
+    </div>
+<pre>// ---- Step 1: Create and Insert Employee Documents ----
+use company_db;
+
+db.employees.insertMany([
+  { empno:7369, ename:"SMITH",  job:"CLERK",     hiredate:"17-DEC-80", mgr:7902, sal:800,  deptno:20 },
+  { empno:7499, ename:"ALLEN",  job:"SALESMAN",  hiredate:"20-FEB-81", mgr:7698, sal:1600, comm:300,  deptno:30 },
+  { empno:7521, ename:"WARD",   job:"SALESMAN",  hiredate:"22-FEB-81", mgr:7698, sal:1250, comm:500,  deptno:30 },
+  { empno:7566, ename:"JONES",  job:"MANAGER",   hiredate:"02-APR-81", mgr:7839, sal:2975, deptno:20 },
+  { empno:7654, ename:"MARTIN", job:"SALESMAN",  hiredate:"28-SEP-81", mgr:7698, sal:1250, comm:1400, deptno:30 },
+  { empno:7698, ename:"BLAKE",  job:"MANAGER",   hiredate:"01-MAY-81", mgr:7839, sal:2850, deptno:30 },
+  { empno:7782, ename:"CLARK",  job:"MANAGER",   hiredate:"09-JUN-81", mgr:7839, sal:2450, deptno:10 },
+  { empno:7788, ename:"SCOTT",  job:"ANALYST",   hiredate:"19-APR-87", mgr:7566, sal:3000, deptno:20 },
+  { empno:7839, ename:"KING",   job:"PRESIDENT", hiredate:"17-NOV-81", sal:5000, deptno:10 },
+  { empno:7844, ename:"TURNER", job:"SALESMAN",  hiredate:"08-SEP-81", mgr:7698, sal:1500, comm:0,    deptno:30 },
+  { empno:7876, ename:"ADAMS",  job:"CLERK",     hiredate:"23-MAY-87", mgr:7788, sal:1100, deptno:20 },
+  { empno:7900, ename:"JAMES",  job:"CLERK",     hiredate:"03-DEC-81", mgr:7698, sal:950,  deptno:30 },
+  { empno:7902, ename:"FORD",   job:"ANALYST",   hiredate:"03-DEC-81", mgr:7566, sal:3000, deptno:20 },
+  { empno:7934, ename:"MILLER", job:"CLERK",     hiredate:"23-JAN-82", mgr:7782, sal:1300, deptno:10 }
+]);
+
+// ---- Query 1: All employees in ascending order of EMPNO ----
+db.employees.find().sort({ empno: 1 });
+
+// ---- Query 2: Sum of all salaries (aggregate) ----
+db.employees.aggregate([
+  {
+    $group: {
+      _id: null,
+      totalSalary: { $sum: "$sal" }
+    }
+  }
+]);
+// Output: { _id: null, totalSalary: 29025 }
+
+// ---- Query 3: Only the 8th document (0-indexed → skip 7, limit 1) ----
+db.employees.find().skip(7).limit(1);
+
+// ---- Query 4: Employees whose salary is less than 1200 ----
+db.employees.find({ sal: { $lt: 1200 } });
+// Returns: SMITH (800), WARD (1250? No), JAMES (950), ADAMS (1100)</pre>
+  </div>
+</div>
+
+<!-- ============================= PROGRAM 11 ============================= -->
+<div class="program" id="p11">
+  <div class="prog-header">Program 11 – 6×6 Sudoku Solver (DOM)</div>
+  <div class="prog-body">
+    <div class="demo-box">
+      <style>
+        #sudoku { display:inline-grid; grid-template-columns:repeat(6,44px); gap:2px; }
+        #sudoku input {
+          width:42px; height:42px; text-align:center; font-size:18px; font-weight:bold;
+          border:1px solid #888; border-radius:3px; background:#fff;
+        }
+        #sudoku input[readonly] { background:#e0e0e0; }
+        #sudoku input.solved { background:#d4edda; color:#196f3d; }
+        /* thick borders for 2×3 boxes */
+        #sudoku input:nth-child(3n+1) { border-left:2px solid #333; }
+        #sudoku input:nth-child(6n)   { border-right:2px solid #333; }
+        #sudoku input:nth-child(n+1):nth-child(-n+6)   { border-top:2px solid #333; }
+        #sudoku input:nth-child(n+13):nth-child(-n+18) { border-top:2px solid #333; }
+        #sudoku input:nth-child(n+31):nth-child(-n+36) { border-top:2px solid #333; }
+        #sudoku input:nth-child(n+31):nth-child(-n+36) { border-bottom:2px solid #333; }
+      </style>
+      <div id="sudoku"></div>
+      <br>
+      <button class="btn-green" onclick="solveSudoku6()">▶ Solve</button>
+      <button onclick="clearSudoku6()">Clear</button>
+      <div class="result-box" id="sudokuMsg" style="display:none"></div>
+    </div>
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;6x6 Sudoku Solver&lt;/title&gt;
+  &lt;style&gt;
+    #grid { display:grid; grid-template-columns:repeat(6,44px); gap:2px; }
+    #grid input {
+      width:42px; height:42px; text-align:center;
+      font-size:18px; border:1px solid #888;
+    }
+    #grid input[readonly] { background:#ddd; }
+    #grid input.solved    { background:#d4edda; }
+    /* Thick borders every 2 rows (2x3 boxes) */
+    #grid input:nth-child(3n+1)             { border-left:3px solid #333; }
+    #grid input:nth-child(n+1):nth-child(-n+6) { border-top:3px solid #333; }
+    #grid input:nth-child(n+13):nth-child(-n+18){ border-top:3px solid #333; }
+    #grid input:nth-child(n+25):nth-child(-n+30){ border-top:3px solid #333; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;6×6 Sudoku Solver&lt;/h2&gt;
+  &lt;div id="grid"&gt;&lt;/div&gt;
+  &lt;br&gt;
+  &lt;button onclick="solvePuzzle()"&gt;Solve&lt;/button&gt;
+  &lt;button onclick="clearPuzzle()"&gt;Clear&lt;/button&gt;
+  &lt;p id="msg"&gt;&lt;/p&gt;
+
+  &lt;script&gt;
+    // Initial puzzle (0 = empty)
+    var initial = [
+      [5,3,0,0,7,0],
+      [6,0,0,1,9,0],
+      [0,9,8,0,0,0],
+      [8,0,0,0,6,0],
+      [4,0,0,8,0,3],
+      [7,0,0,0,2,0]
+    ];
+
+    // Build grid inputs
+    var container = document.getElementById('grid');
+    for (var r = 0; r &lt; 6; r++) {
+      for (var c = 0; c &lt; 6; c++) {
+        var inp = document.createElement('input');
+        inp.maxLength = 1;
+        inp.id = 'c' + r + c;
+        if (initial[r][c]) {
+          inp.value = initial[r][c];
+          inp.readOnly = true;
+        }
+        container.appendChild(inp);
+      }
+    }
+
+    function getGrid() {
+      var g = [];
+      for (var r = 0; r &lt; 6; r++) {
+        g[r] = [];
+        for (var c = 0; c &lt; 6; c++) {
+          g[r][c] = parseInt(document.getElementById('c'+r+c).value) || 0;
+        }
+      }
+      return g;
+    }
+
+    function setGrid(g) {
+      for (var r = 0; r &lt; 6; r++) {
+        for (var c = 0; c &lt; 6; c++) {
+          var el = document.getElementById('c'+r+c);
+          if (!el.readOnly) {
+            el.value = g[r][c] || '';
+            if (g[r][c]) el.className = 'solved';
+          }
+        }
+      }
+    }
+
+    function isValid(g, r, c, n) {
+      for (var i = 0; i &lt; 6; i++) {
+        if (g[r][i] === n || g[i][c] === n) return false;
+      }
+      // 2x3 box check
+      var br = Math.floor(r / 2) * 2;
+      var bc = Math.floor(c / 3) * 3;
+      for (var i = 0; i &lt; 2; i++) {
+        for (var j = 0; j &lt; 3; j++) {
+          if (g[br+i][bc+j] === n) return false;
+        }
+      }
+      return true;
+    }
+
+    function solve(g) {
+      for (var r = 0; r &lt; 6; r++) {
+        for (var c = 0; c &lt; 6; c++) {
+          if (g[r][c] === 0) {
+            for (var n = 1; n &lt;= 6; n++) {
+              if (isValid(g, r, c, n)) {
+                g[r][c] = n;
+                if (solve(g)) return true;
+                g[r][c] = 0;
+              }
+            }
+            return false;
+          }
+        }
+      }
+      return true;
+    }
+
+    function solvePuzzle() {
+      var g = getGrid();
+      if (solve(g)) {
+        setGrid(g);
+        document.getElementById('msg').textContent = '✔ Puzzle Solved!';
+      } else {
+        document.getElementById('msg').textContent = '✗ No solution found.';
+      }
+    }
+
+    function clearPuzzle() {
+      for (var r = 0; r &lt; 6; r++) {
+        for (var c = 0; c &lt; 6; c++) {
+          var el = document.getElementById('c'+r+c);
+          if (!el.readOnly) { el.value = ''; el.className = ''; }
+        }
+      }
+      document.getElementById('msg').textContent = '';
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    <script>
+      var sudokuInitial = [
+        [5,3,0,0,7,0],[6,0,0,1,9,0],[0,9,8,0,0,0],
+        [8,0,0,0,6,0],[4,0,0,8,0,3],[7,0,0,0,2,0]
+      ];
+      (function buildGrid() {
+        var g = document.getElementById('sudoku');
+        for (var r = 0; r < 6; r++) for (var c = 0; c < 6; c++) {
+          var inp = document.createElement('input');
+          inp.maxLength = 1; inp.id = 's6_'+r+c;
+          if (sudokuInitial[r][c]) { inp.value = sudokuInitial[r][c]; inp.readOnly = true; }
+          g.appendChild(inp);
+        }
+      })();
+      function getGrid6() {
+        var g = [];
+        for (var r=0;r<6;r++){g[r]=[];for(var c=0;c<6;c++) g[r][c]=parseInt(document.getElementById('s6_'+r+c).value)||0;}
+        return g;
+      }
+      function setGrid6(g) {
+        for(var r=0;r<6;r++) for(var c=0;c<6;c++){var el=document.getElementById('s6_'+r+c);if(!el.readOnly){el.value=g[r][c]||'';if(g[r][c])el.className='solved';}}
+      }
+      function isValid6(g,r,c,n){
+        for(var i=0;i<6;i++) if(g[r][i]===n||g[i][c]===n) return false;
+        var br=Math.floor(r/2)*2,bc=Math.floor(c/3)*3;
+        for(var i=0;i<2;i++) for(var j=0;j<3;j++) if(g[br+i][bc+j]===n) return false;
+        return true;
+      }
+      function solve6(g){
+        for(var r=0;r<6;r++) for(var c=0;c<6;c++){
+          if(g[r][c]===0){
+            for(var n=1;n<=6;n++){
+              if(isValid6(g,r,c,n)){g[r][c]=n;if(solve6(g))return true;g[r][c]=0;}
+            }
+            return false;
+          }
+        }
+        return true;
+      }
+      function solveSudoku6(){
+        var g=getGrid6();var msg=document.getElementById('sudokuMsg');
+        msg.style.display='block';
+        if(solve6(g)){setGrid6(g);msg.textContent='✔ Puzzle Solved!';}
+        else msg.textContent='✗ No solution found.';
+      }
+      function clearSudoku6(){
+        for(var r=0;r<6;r++) for(var c=0;c<6;c++){var el=document.getElementById('s6_'+r+c);if(!el.readOnly){el.value='';el.className='';}}
+        var msg=document.getElementById('sudokuMsg');msg.style.display='none';msg.textContent='';
+      }
+    </script>
+  </div>
+</div>
+
+<!-- ============================= PROGRAM 12 ============================= -->
+<div class="program" id="p12">
+  <div class="prog-header">Program 12 – Meals & Foods Table (Multi-level Headers)</div>
+  <div class="prog-body">
+    <div class="demo-box">
+      <table>
+        <tr>
+          <th rowspan="2" style="width:120px">Foods</th>
+          <th colspan="3">Meals</th>
+        </tr>
+        <tr>
+          <th>Breakfast</th><th>Lunch</th><th>Dinner</th>
+        </tr>
+        <tr><td>Bread</td><td>60 g</td><td>80 g</td><td>100 g</td></tr>
+        <tr><td>Main Course</td><td>100 g</td><td>200 g</td><td>250 g</td></tr>
+        <tr><td>Vegetable</td><td>50 g</td><td>120 g</td><td>150 g</td></tr>
+        <tr><td>Dessert</td><td>40 g</td><td>70 g</td><td>90 g</td></tr>
+      </table>
+    </div>
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Meals and Foods Table&lt;/title&gt;
+  &lt;style&gt;
+    table { border-collapse: collapse; margin: 20px auto; width: 70%; }
+    th, td { border: 1px solid #999; padding: 10px; text-align: center; }
+    th { background: #2c3e50; color: white; }
+    tr:nth-child(even) td { background: #f9f9f9; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2 style="text-align:center"&gt;Daily Food Intake (grams)&lt;/h2&gt;
+  &lt;table&gt;
+    &lt;tr&gt;
+      &lt;th rowspan="2"&gt;Foods&lt;/th&gt;
+      &lt;th colspan="3"&gt;Meals&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Breakfast&lt;/th&gt;
+      &lt;th&gt;Lunch&lt;/th&gt;
+      &lt;th&gt;Dinner&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Bread&lt;/td&gt;&lt;td&gt;60 g&lt;/td&gt;&lt;td&gt;80 g&lt;/td&gt;&lt;td&gt;100 g&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Main Course&lt;/td&gt;&lt;td&gt;100 g&lt;/td&gt;&lt;td&gt;200 g&lt;/td&gt;&lt;td&gt;250 g&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Vegetable&lt;/td&gt;&lt;td&gt;50 g&lt;/td&gt;&lt;td&gt;120 g&lt;/td&gt;&lt;td&gt;150 g&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Dessert&lt;/td&gt;&lt;td&gt;40 g&lt;/td&gt;&lt;td&gt;70 g&lt;/td&gt;&lt;td&gt;90 g&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+  </div>
+</div>
+
+<!-- ============================= PROGRAM 13 ============================= -->
+<div class="program" id="p13">
+  <div class="prog-header">Program 13 – Popcorn Sales Order Form</div>
+  <div class="prog-body">
+    <div class="demo-box">
+      <style>
+        .pc-wrap { border:1px solid #ccc; padding:16px; border-radius:6px; max-width:520px; }
+        .pc-wrap h3 { text-align:center; margin-bottom:14px; }
+        .pc-wrap .field { display:grid; grid-template-columns:150px 1fr; align-items:center; margin:6px 0; }
+        .pc-wrap .field label { font-weight:bold; }
+      </style>
+      <div class="pc-wrap">
+        <h3>Welcome to Millenium Gymnastics Booster Club Popcorn Sales</h3>
+        <div class="field"><label>Buyer's Name:</label><input type="text" style="width:200px"></div>
+        <div class="field"><label>Street Address:</label><input type="text" style="width:200px"></div>
+        <div class="field"><label>City, State, Zip:</label><input type="text" style="width:200px"></div>
+        <br>
+        <table>
+          <tr><th>Product Name</th><th>Price</th><th>Quantity</th></tr>
+          <tr><td>Unpopped Popcorn (1 lb.)</td><td>$3.00</td><td><input type="number" min="0" value="0" style="width:60px"></td></tr>
+          <tr><td>Caramel Popcorn (2 lb. cannister)</td><td>$3.50</td><td><input type="number" min="0" value="0" style="width:60px"></td></tr>
+          <tr><td>Caramel Nut Popcorn (2 lb. cannister)</td><td>$4.50</td><td><input type="number" min="0" value="0" style="width:60px"></td></tr>
+          <tr><td>Toffey Nut Popcorn (2 lb. cannister)</td><td>$5.00</td><td><input type="number" min="0" value="0" style="width:60px"></td></tr>
+        </table>
+        <br>
+        <b>Payment Method:</b><br>
+        <label><input type="radio" name="pc_pay"> Visa</label>
+        <label><input type="radio" name="pc_pay"> Master Card</label>
+        <label><input type="radio" name="pc_pay"> Discover</label>
+        <label><input type="radio" name="pc_pay"> Check</label>
+        <br><br>
+        <button>Submit Order</button>
+        <button type="button">Clear Order Form</button>
+      </div>
+    </div>
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Popcorn Sales&lt;/title&gt;
+  &lt;style&gt;
+    body { font-family: Arial; max-width: 540px; margin: 20px auto; }
+    .form-box { border: 1px solid #ccc; padding: 16px; border-radius: 6px; }
+    h3 { text-align: center; }
+    table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+    th, td { border: 1px solid #ccc; padding: 8px; }
+    th { background: #2c3e50; color: white; }
+    .field { display: flex; gap: 10px; align-items: center; margin: 6px 0; }
+    .field label { width: 140px; font-weight: bold; }
+    input[type=text], input[type=number] { padding: 6px; }
+    button { padding: 7px 16px; margin: 4px; cursor: pointer; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="form-box"&gt;
+    &lt;h3&gt;Welcome to Millenium Gymnastics Booster Club Popcorn Sales&lt;/h3&gt;
+    &lt;form&gt;
+      &lt;div class="field"&gt;
+        &lt;label&gt;Buyer's Name:&lt;/label&gt;
+        &lt;input type="text" name="name"&gt;
+      &lt;/div&gt;
+      &lt;div class="field"&gt;
+        &lt;label&gt;Street Address:&lt;/label&gt;
+        &lt;input type="text" name="street"&gt;
+      &lt;/div&gt;
+      &lt;div class="field"&gt;
+        &lt;label&gt;City, State, Zip:&lt;/label&gt;
+        &lt;input type="text" name="city"&gt;
+      &lt;/div&gt;
+
+      &lt;table&gt;
+        &lt;tr&gt;&lt;th&gt;Product Name&lt;/th&gt;&lt;th&gt;Price&lt;/th&gt;&lt;th&gt;Quantity&lt;/th&gt;&lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Unpopped Popcorn (1 lb.)&lt;/td&gt;&lt;td&gt;$3.00&lt;/td&gt;
+          &lt;td&gt;&lt;input type="number" min="0" value="0" style="width:60px"&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Caramel Popcorn (2 lb. cannister)&lt;/td&gt;&lt;td&gt;$3.50&lt;/td&gt;
+          &lt;td&gt;&lt;input type="number" min="0" value="0" style="width:60px"&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Caramel Nut Popcorn (2 lb. cannister)&lt;/td&gt;&lt;td&gt;$4.50&lt;/td&gt;
+          &lt;td&gt;&lt;input type="number" min="0" value="0" style="width:60px"&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Toffey Nut Popcorn (2 lb. cannister)&lt;/td&gt;&lt;td&gt;$5.00&lt;/td&gt;
+          &lt;td&gt;&lt;input type="number" min="0" value="0" style="width:60px"&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+
+      &lt;b&gt;Payment Method:&lt;/b&gt;&lt;br&gt;
+      &lt;label&gt;&lt;input type="radio" name="pay"&gt; Visa&lt;/label&gt;
+      &lt;label&gt;&lt;input type="radio" name="pay"&gt; Master Card&lt;/label&gt;
+      &lt;label&gt;&lt;input type="radio" name="pay"&gt; Discover&lt;/label&gt;
+      &lt;label&gt;&lt;input type="radio" name="pay"&gt; Check&lt;/label&gt;
+      &lt;br&gt;&lt;br&gt;
+      &lt;input type="submit" value="Submit Order"&gt;
+      &lt;input type="reset" value="Clear Order Form"&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+  </div>
+</div>
+
+<!-- ============================= PROGRAM 14 ============================= -->
+<div class="program" id="p14">
+  <div class="prog-header">Program 14 – Color Pattern (HTML + CSS Only)</div>
+  <div class="prog-body">
+    <div class="demo-box">
+      <style>
+        .pat { display:inline-grid; grid-template-columns:repeat(6,42px); gap:5px; }
+        .pat div { width:42px; height:42px; border-radius:3px; }
+        .c1{background:#8B4513}.c2{background:#FFA500}.c3{background:#FF6600}
+        .c4{background:#FFDAB9}.c5{background:#FF8C00}.c6{background:#A0522D}
+      </style>
+      <div class="pat">
+        <div class="c1"></div><div class="c2"></div><div class="c1"></div><div class="c3"></div><div class="c1"></div><div class="c5"></div>
+        <div class="c4"></div><div class="c1"></div><div class="c5"></div><div class="c4"></div><div class="c1"></div><div class="c3"></div>
+        <div class="c1"></div><div class="c3"></div><div class="c1"></div><div class="c5"></div><div class="c6"></div><div class="c4"></div>
+        <div class="c3"></div><div class="c4"></div><div class="c6"></div><div class="c3"></div><div class="c4"></div><div class="c1"></div>
+        <div class="c4"></div><div class="c1"></div><div class="c4"></div><div class="c5"></div><div class="c3"></div><div class="c5"></div>
+      </div>
+    </div>
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Color Pattern&lt;/title&gt;
+  &lt;style&gt;
+    .grid {
+      display: inline-grid;
+      grid-template-columns: repeat(6, 42px);
+      gap: 5px;
+      padding: 10px;
+    }
+    .grid div { width: 42px; height: 42px; border-radius: 3px; }
+
+    /* Color classes */
+    .c1 { background: #8B4513; }  /* dark brown  */
+    .c2 { background: #FFA500; }  /* orange      */
+    .c3 { background: #FF6600; }  /* dark orange */
+    .c4 { background: #FFDAB9; }  /* peach       */
+    .c5 { background: #FF8C00; }  /* amber       */
+    .c6 { background: #A0522D; }  /* sienna      */
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;Color Pattern&lt;/h2&gt;
+  &lt;div class="grid"&gt;
+    &lt;!-- Row 1 --&gt;
+    &lt;div class="c1"&gt;&lt;/div&gt;&lt;div class="c2"&gt;&lt;/div&gt;&lt;div class="c1"&gt;&lt;/div&gt;
+    &lt;div class="c3"&gt;&lt;/div&gt;&lt;div class="c1"&gt;&lt;/div&gt;&lt;div class="c5"&gt;&lt;/div&gt;
+    &lt;!-- Row 2 --&gt;
+    &lt;div class="c4"&gt;&lt;/div&gt;&lt;div class="c1"&gt;&lt;/div&gt;&lt;div class="c5"&gt;&lt;/div&gt;
+    &lt;div class="c4"&gt;&lt;/div&gt;&lt;div class="c1"&gt;&lt;/div&gt;&lt;div class="c3"&gt;&lt;/div&gt;
+    &lt;!-- Row 3 --&gt;
+    &lt;div class="c1"&gt;&lt;/div&gt;&lt;div class="c3"&gt;&lt;/div&gt;&lt;div class="c1"&gt;&lt;/div&gt;
+    &lt;div class="c5"&gt;&lt;/div&gt;&lt;div class="c6"&gt;&lt;/div&gt;&lt;div class="c4"&gt;&lt;/div&gt;
+    &lt;!-- Row 4 --&gt;
+    &lt;div class="c3"&gt;&lt;/div&gt;&lt;div class="c4"&gt;&lt;/div&gt;&lt;div class="c6"&gt;&lt;/div&gt;
+    &lt;div class="c3"&gt;&lt;/div&gt;&lt;div class="c4"&gt;&lt;/div&gt;&lt;div class="c1"&gt;&lt;/div&gt;
+    &lt;!-- Row 5 --&gt;
+    &lt;div class="c4"&gt;&lt;/div&gt;&lt;div class="c1"&gt;&lt;/div&gt;&lt;div class="c4"&gt;&lt;/div&gt;
+    &lt;div class="c5"&gt;&lt;/div&gt;&lt;div class="c3"&gt;&lt;/div&gt;&lt;div class="c5"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+  </div>
+</div>
+
+<!-- ============================= PROGRAM 15 ============================= -->
+<div class="program" id="p15">
+  <div class="prog-header">Program 15 – JavaScript Calculator</div>
+  <div class="prog-body">
+    <div class="demo-box">
+      <style>
+        .calc { display:inline-block; background:#2c2c2c; padding:16px; border-radius:10px; }
+        .calc-screen {
+          background:#111; color:#00ff88; font-size:26px; text-align:right;
+          padding:10px 14px; border-radius:6px; min-height:48px; margin-bottom:10px;
+          letter-spacing:1px; font-family:monospace; word-break:break-all;
+        }
+        .calc-btns { display:grid; grid-template-columns:repeat(4,64px); gap:8px; }
+        .calc-btns button {
+          width:64px; height:54px; font-size:18px; font-weight:bold;
+          border-radius:6px; border:none; cursor:pointer; transition:.1s;
+        }
+        .btn-num  { background:#444; color:#fff; }
+        .btn-num:hover  { background:#555; }
+        .btn-op   { background:#e67e22; color:#fff; }
+        .btn-op:hover   { background:#f39c12; }
+        .btn-eq   { background:#27ae60; color:#fff; }
+        .btn-eq:hover   { background:#2ecc71; }
+        .btn-spec { background:#c0392b; color:#fff; }
+        .btn-spec:hover { background:#e74c3c; }
+      </style>
+      <div class="calc">
+        <div class="calc-screen" id="calcScreen">0</div>
+        <div class="calc-btns">
+          <button class="btn-spec" onclick="calcAct('C')">C</button>
+          <button class="btn-spec" onclick="calcAct('CE')">CE</button>
+          <button class="btn-op"   onclick="calcAct('(')">(</button>
+          <button class="btn-op"   onclick="calcAct(')')">)</button>
+
+          <button class="btn-num"  onclick="calcAct('7')">7</button>
+          <button class="btn-num"  onclick="calcAct('8')">8</button>
+          <button class="btn-num"  onclick="calcAct('9')">9</button>
+          <button class="btn-op"   onclick="calcAct('/')">÷</button>
+
+          <button class="btn-num"  onclick="calcAct('4')">4</button>
+          <button class="btn-num"  onclick="calcAct('5')">5</button>
+          <button class="btn-num"  onclick="calcAct('6')">6</button>
+          <button class="btn-op"   onclick="calcAct('*')">×</button>
+
+          <button class="btn-num"  onclick="calcAct('1')">1</button>
+          <button class="btn-num"  onclick="calcAct('2')">2</button>
+          <button class="btn-num"  onclick="calcAct('3')">3</button>
+          <button class="btn-op"   onclick="calcAct('-')">−</button>
+
+          <button class="btn-num"  onclick="calcAct('.')">.</button>
+          <button class="btn-num"  onclick="calcAct('0')">0</button>
+          <button class="btn-eq"   onclick="calcAct('=')">=</button>
+          <button class="btn-op"   onclick="calcAct('+')">+</button>
+        </div>
+      </div>
+    </div>
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;JavaScript Calculator&lt;/title&gt;
+  &lt;style&gt;
+    .calc  { display:inline-block; background:#2c2c2c; padding:16px; border-radius:10px; }
+    .screen {
+      background:#111; color:#00ff88; font-size:26px;
+      text-align:right; padding:10px 14px; border-radius:6px;
+      min-height:48px; margin-bottom:10px; font-family:monospace;
+    }
+    .btns { display:grid; grid-template-columns:repeat(4,64px); gap:8px; }
+    .btns button { width:64px; height:54px; font-size:18px; border:none; border-radius:6px; cursor:pointer; }
+    .num  { background:#444; color:#fff; }
+    .op   { background:#e67e22; color:#fff; }
+    .eq   { background:#27ae60; color:#fff; }
+    .spec { background:#c0392b; color:#fff; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="calc"&gt;
+    &lt;div class="screen" id="screen"&gt;0&lt;/div&gt;
+    &lt;div class="btns"&gt;
+      &lt;button class="spec" onclick="act('C')"&gt;C&lt;/button&gt;
+      &lt;button class="spec" onclick="act('CE')"&gt;CE&lt;/button&gt;
+      &lt;button class="op"   onclick="act('(')"&gt;(&lt;/button&gt;
+      &lt;button class="op"   onclick="act(')')"&gt;)&lt;/button&gt;
+
+      &lt;button class="num" onclick="act('7')"&gt;7&lt;/button&gt;
+      &lt;button class="num" onclick="act('8')"&gt;8&lt;/button&gt;
+      &lt;button class="num" onclick="act('9')"&gt;9&lt;/button&gt;
+      &lt;button class="op"  onclick="act('/')"&gt;÷&lt;/button&gt;
+
+      &lt;button class="num" onclick="act('4')"&gt;4&lt;/button&gt;
+      &lt;button class="num" onclick="act('5')"&gt;5&lt;/button&gt;
+      &lt;button class="num" onclick="act('6')"&gt;6&lt;/button&gt;
+      &lt;button class="op"  onclick="act('*')"&gt;×&lt;/button&gt;
+
+      &lt;button class="num" onclick="act('1')"&gt;1&lt;/button&gt;
+      &lt;button class="num" onclick="act('2')"&gt;2&lt;/button&gt;
+      &lt;button class="num" onclick="act('3')"&gt;3&lt;/button&gt;
+      &lt;button class="op"  onclick="act('-')"&gt;−&lt;/button&gt;
+
+      &lt;button class="num" onclick="act('.')"&gt;.&lt;/button&gt;
+      &lt;button class="num" onclick="act('0')"&gt;0&lt;/button&gt;
+      &lt;button class="eq"  onclick="act('=')"&gt;=&lt;/button&gt;
+      &lt;button class="op"  onclick="act('+')"&gt;+&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    var expr = '';
+    function act(v) {
+      var screen = document.getElementById('screen');
+      if (v === 'C') {
+        expr = '';
+        screen.textContent = '0';
+      } else if (v === 'CE') {
+        expr = expr.slice(0, -1);
+        screen.textContent = expr || '0';
+      } else if (v === '=') {
+        try {
+          expr = String(eval(expr));
+          screen.textContent = expr;
+        } catch (e) {
+          screen.textContent = 'Error';
+          expr = '';
+        }
+      } else {
+        expr += v;
+        screen.textContent = expr;
+      }
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    <script>
+      var calcExpr = '';
+      function calcAct(v) {
+        var s = document.getElementById('calcScreen');
+        if (v === 'C') { calcExpr = ''; s.textContent = '0'; }
+        else if (v === 'CE') { calcExpr = calcExpr.slice(0,-1); s.textContent = calcExpr || '0'; }
+        else if (v === '=') {
+          try { calcExpr = String(eval(calcExpr)); s.textContent = calcExpr; }
+          catch(e) { s.textContent = 'Error'; calcExpr = ''; }
+        } else { calcExpr += v; s.textContent = calcExpr; }
+      }
+    </script>
+  </div>
+</div>
+
+<!-- ============================= PROGRAM 16 ============================= -->
+<div class="program" id="p16">
+  <div class="prog-header">Program 16 – JavaScript: counter()</div>
+  <div class="prog-body">
+    <div class="demo-box">
+      <label><b>Enter comma-separated numbers:</b></label>
+      <input type="text" id="ctrIn" value="-3, 0, 5, -1, 0, 7, -9, 4" style="width:280px">
+      <button onclick="runCounter()">▶ Count</button>
+      <div class="result-box" id="ctrOut" style="display:none"></div>
+    </div>
+<pre>&lt;!-- counter.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;counter Function&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;counter Function Test&lt;/h2&gt;
+  Enter numbers (comma-separated):
+  &lt;input type="text" id="nums" value="-3,0,5,-1,0,7"&gt;
+  &lt;button onclick="runTest()"&gt;Count&lt;/button&gt;
+  &lt;p id="output"&gt;&lt;/p&gt;
+  &lt;script src="counter.js"&gt;&lt;/script&gt;
+  &lt;script&gt;
+    function runTest() {
+      var arr = document.getElementById('nums').value
+                  .split(',').map(Number);
+      var r = counter(arr);
+      document.getElementById('output').textContent =
+        'Negatives: ' + r.negative +
+        ' | Zeros: '  + r.zero    +
+        ' | Positives: ' + r.positive;
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+/* ---- counter.js ---- */
+function counter(arr) {
+  var neg = 0, zero = 0, pos = 0;
+  for (var i = 0; i &lt; arr.length; i++) {
+    if      (arr[i] &lt; 0) neg++;
+    else if (arr[i] === 0) zero++;
+    else                   pos++;
+  }
+  return { negative: neg, zero: zero, positive: pos };
+}
+
+/* Tests:
+   counter([-3, 0, 5, -1, 0, 7]) → { negative:2, zero:2, positive:2 }
+   counter([0, 0, 1, 2, -5])     → { negative:1, zero:2, positive:2 }
+*/</pre>
+    <script>
+      function counter(arr) {
+        var neg=0,zero=0,pos=0;
+        for(var i=0;i<arr.length;i++){
+          if(arr[i]<0)neg++;else if(arr[i]===0)zero++;else pos++;
+        }
+        return{negative:neg,zero:zero,positive:pos};
+      }
+      function runCounter() {
+        var arr = document.getElementById('ctrIn').value.split(',').map(Number);
+        var r = counter(arr);
+        var el = document.getElementById('ctrOut');
+        el.style.display='block';
+        el.textContent = 'Negatives: '+r.negative+' | Zeros: '+r.zero+' | Positives: '+r.positive;
+      }
+    </script>
+  </div>
+</div>
+
+<!-- ============================= PROGRAM 17 ============================= -->
+<div class="program" id="p17">
+  <div class="prog-header">Program 17 – Password Validation Form</div>
+  <div class="prog-body">
+    <div class="demo-box">
+      <style>
+        .pw-form { max-width:340px; }
+        .pw-form .field { display:grid; grid-template-columns:160px 1fr; align-items:center; margin:8px 0; }
+        .pw-form .field label { font-weight:bold; }
+        #pwMsg { margin-top:10px; padding:8px; border-radius:4px; font-weight:bold; display:none; }
+        #pwMsg.ok  { background:#d4edda; color:#155724; }
+        #pwMsg.err { background:#f8d7da; color:#721c24; }
+      </style>
+      <div class="pw-form">
+        <div class="field">
+          <label>Password:</label>
+          <input type="password" id="pw1" placeholder="Enter password">
+        </div>
+        <div class="field">
+          <label>Confirm Password:</label>
+          <input type="password" id="pw2" placeholder="Re-enter password" onblur="checkPW()">
+        </div>
+        <br>
+        <button class="btn-green" onclick="return submitPW()">Submit</button>
+        <button onclick="resetPW()">Reset</button>
+        <div id="pwMsg"></div>
+      </div>
+    </div>
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Password Validation&lt;/title&gt;
+  &lt;style&gt;
+    body { font-family: Arial; max-width: 400px; margin: 30px auto; }
+    .field { display: flex; gap: 10px; align-items: center; margin: 10px 0; }
+    .field label { width: 160px; font-weight: bold; }
+    input { padding: 7px; width: 180px; border: 1px solid #ccc; border-radius: 4px; }
+    button { padding: 8px 18px; margin: 4px; cursor: pointer; }
+    #msg { margin-top: 10px; padding: 8px; border-radius: 4px; font-weight: bold; display: none; }
+    .ok  { background: #d4edda; color: #155724; }
+    .err { background: #f8d7da; color: #721c24; }
+  &lt;/style&gt;
+  &lt;script&gt;
+    // Called on blur of second field and on submit
+    function checkPasswords() {
+      var p1 = document.getElementById('pw1').value;
+      var p2 = document.getElementById('pw2').value;
+      var msg = document.getElementById('msg');
+
+      // Test 1: first password must not be empty
+      if (p1 === '') {
+        alert('Please enter a password in the first field.');
+        return false;
+      }
+
+      // Test 2: both passwords must match
+      if (p1 !== p2) {
+        alert('Passwords do not match. Please try again.');
+        msg.style.display = 'block';
+        msg.className = 'err';
+        msg.textContent = '✗ Passwords do not match!';
+        return false;
+      }
+
+      msg.style.display = 'block';
+      msg.className = 'ok';
+      msg.textContent = '✔ Passwords match!';
+      return true;
+    }
+
+    function resetForm() {
+      document.getElementById('pw1').value = '';
+      document.getElementById('pw2').value = '';
+      var msg = document.getElementById('msg');
+      msg.style.display = 'none';
+    }
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;Password Validation&lt;/h2&gt;
+  &lt;form onsubmit="return checkPasswords()"&gt;
+    &lt;div class="field"&gt;
+      &lt;label&gt;Password:&lt;/label&gt;
+      &lt;input type="password" id="pw1" placeholder="Enter password"&gt;
+    &lt;/div&gt;
+    &lt;div class="field"&gt;
+      &lt;label&gt;Confirm Password:&lt;/label&gt;
+      &lt;input type="password" id="pw2"
+             placeholder="Re-enter password"
+             onblur="checkPasswords()"&gt;
+    &lt;/div&gt;
+    &lt;br&gt;
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+    &lt;button type="button" onclick="resetForm()"&gt;Reset&lt;/button&gt;
+    &lt;div id="msg"&gt;&lt;/div&gt;
+  &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    <script>
+      function checkPW() {
+        var p1=document.getElementById('pw1').value;
+        var p2=document.getElementById('pw2').value;
+        var msg=document.getElementById('pwMsg');
+        if(!p1){msg.style.display='none';return false;}
+        msg.style.display='block';
+        if(p1!==p2){msg.className='err';msg.textContent='✗ Passwords do not match!';}
+        else{msg.className='ok';msg.textContent='✔ Passwords match!';}
+      }
+      function submitPW() {
+        var p1=document.getElementById('pw1').value;
+        var p2=document.getElementById('pw2').value;
+        var msg=document.getElementById('pwMsg');
+        if(!p1){alert('Please enter a password.');return false;}
+        if(p1!==p2){alert('Passwords do not match!');return false;}
+        msg.style.display='block';msg.className='ok';
+        msg.textContent='✔ Form submitted successfully!';
+        return false;
+      }
+      function resetPW(){
+        document.getElementById('pw1').value='';
+        document.getElementById('pw2').value='';
+        var msg=document.getElementById('pwMsg');
+        msg.style.display='none';msg.className='';
+      }
+    </script>
+  </div>
+</div>
+
+<!-- ===================================================================== -->
+<!--                         OPTIONAL PROGRAMS                              -->
+<!-- ===================================================================== -->
+<div style="background:#d35400;color:white;padding:16px 30px;font-size:22px;font-weight:bold;margin-top:40px;">
+  ⚠ Optional Programs (9, 10, 18)
+</div>
+
+<!-- ============================= PROGRAM 9 (OPTIONAL) ============================= -->
+<div class="program" id="p9">
+  <div class="prog-header optional">Program 9 (Optional) – ES6 Weather App with Graph</div>
+  <div class="prog-body">
+    <div class="demo-box">
+      <p>Enter a city to see a mock weather forecast graph (ES6 features: arrow functions, callbacks, promises, async/await):</p>
+      <input type="text" id="city9" value="Hyderabad" style="width:180px">
+      <button class="btn-green" onclick="loadWeather9()">▶ Get Weather</button>
+      <div class="result-box" id="w9info" style="display:none;margin-bottom:10px;"></div>
+      <canvas id="w9canvas" width="540" height="220" style="display:none;border:1px solid #ddd;border-radius:6px;margin-top:8px;"></canvas>
+    </div>
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;ES6 Weather App&lt;/title&gt;
+  &lt;style&gt;
+    body { font-family: Arial; max-width: 600px; margin: 20px auto; }
+    canvas { border: 1px solid #ccc; border-radius: 6px; margin-top: 10px; }
+    button { padding: 8px 18px; background: #27ae60; color: white; border: none;
+             border-radius: 4px; cursor: pointer; }
+    input  { padding: 7px; margin-right: 6px; border: 1px solid #ccc; border-radius: 4px; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;Weather Forecast (ES6 Demo)&lt;/h2&gt;
+  &lt;input type="text" id="city" placeholder="Enter city" value="London"&gt;
+  &lt;button onclick="loadWeather()"&gt;Get Weather&lt;/button&gt;
+  &lt;p id="info"&gt;&lt;/p&gt;
+  &lt;canvas id="chart" width="540" height="220"&gt;&lt;/canvas&gt;
+
+  &lt;script&gt;
+    // --- ES6 Arrow Function + Async/Await + Promise ---
+
+    // Simulates fetch (replace URL with real OpenWeatherMap API)
+    const fetchForecast = (city) =&gt; {
+      return new Promise((resolve, reject) =&gt; {
+        // Real API call:
+        // fetch(`https://api.openweathermap.org/data/2.5/forecast
+        //        ?q=${city}&appid=YOUR_KEY&units=metric&cnt=7`)
+        //   .then(r =&gt; r.json()).then(resolve).catch(reject);
+
+        // Mock data for demo:
+        setTimeout(() =&gt; {
+          resolve({
+            city: city,
+            days: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+            temps: [28, 32, 29, 31, 27, 34, 30],
+            humidity: [60, 55, 70, 65, 72, 50, 58]
+          });
+        }, 500);
+      });
+    };
+
+    // Callback to process data
+    const processData = (data, callback) =&gt; callback(data);
+
+    // Draw bar chart on canvas
+    const drawChart = (data) =&gt; {
+      const canvas = document.getElementById('chart');
+      const ctx    = canvas.getContext('2d');
+      const W = canvas.width, H = canvas.height;
+      const barW = 56, gap = 20, startX = 40;
+
+      ctx.clearRect(0, 0, W, H);
+
+      // Background
+      ctx.fillStyle = '#f0f8ff';
+      ctx.fillRect(0, 0, W, H);
+
+      // Title
+      ctx.fillStyle = '#2c3e50';
+      ctx.font = 'bold 14px Arial';
+      ctx.fillText('7-Day Temperature Forecast – ' + data.city, 10, 20);
+
+      // Bars
+      data.days.forEach((day, i) =&gt; {
+        const x   = startX + i * (barW + gap);
+        const h   = data.temps[i] * 4;          // scale
+        const y   = H - h - 30;
+        const hue = 200 + i * 15;
+
+        ctx.fillStyle = `hsl(${hue}, 70%, 55%)`;
+        ctx.fillRect(x, y, barW, h);
+
+        // Temperature label
+        ctx.fillStyle = '#222';
+        ctx.font = 'bold 13px Arial';
+        ctx.fillText(data.temps[i] + '°C', x + 8, y - 6);
+
+        // Day label
+        ctx.fillStyle = '#555';
+        ctx.font = '12px Arial';
+        ctx.fillText(day, x + 14, H - 10);
+      });
+    };
+
+    // Main async function
+    const loadWeather = async () =&gt; {
+      const city = document.getElementById('city').value.trim();
+      if (!city) { alert('Enter a city name!'); return; }
+
+      document.getElementById('info').textContent = 'Loading...';
+
+      try {
+        const data = await fetchForecast(city);                // await Promise
+        processData(data, (d) =&gt; {                             // callback
+          document.getElementById('info').textContent =
+            `City: ${d.city} | Avg Temp: ` +
+            (d.temps.reduce((a,b) =&gt; a+b,0)/d.temps.length).toFixed(1) + '°C';
+          drawChart(d);
+        });
+      } catch (err) {
+        document.getElementById('info').textContent = 'Error: ' + err.message;
+      }
+    };
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    <script>
+      const fetchForecast9 = (city) => new Promise((resolve) => {
+        setTimeout(() => resolve({
+          city: city,
+          days: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+          temps: [28,32,29,31,27,34,30],
+          humidity: [60,55,70,65,72,50,58]
+        }), 400);
+      });
+      const drawChart9 = (data) => {
+        const canvas = document.getElementById('w9canvas');
+        const ctx = canvas.getContext('2d');
+        const W=canvas.width, H=canvas.height, barW=56, gap=20, startX=40;
+        ctx.clearRect(0,0,W,H);
+        ctx.fillStyle='#f0f8ff'; ctx.fillRect(0,0,W,H);
+        ctx.fillStyle='#2c3e50'; ctx.font='bold 14px Arial';
+        ctx.fillText('7-Day Temperature Forecast – '+data.city, 10, 22);
+        data.days.forEach((day,i) => {
+          const x=startX+i*(barW+gap), h=data.temps[i]*4, y=H-h-30;
+          ctx.fillStyle=`hsl(${200+i*15},70%,55%)`; ctx.fillRect(x,y,barW,h);
+          ctx.fillStyle='#222'; ctx.font='bold 13px Arial'; ctx.fillText(data.temps[i]+'°C',x+8,y-6);
+          ctx.fillStyle='#555'; ctx.font='12px Arial'; ctx.fillText(day,x+14,H-10);
+        });
+      };
+      const loadWeather9 = async () => {
+        const city = document.getElementById('city9').value.trim();
+        if(!city){alert('Enter a city!');return;}
+        const info=document.getElementById('w9info'), canvas=document.getElementById('w9canvas');
+        info.style.display='block'; info.textContent='Loading...'; canvas.style.display='none';
+        try {
+          const data = await fetchForecast9(city);
+          const avg = (data.temps.reduce((a,b)=>a+b,0)/data.temps.length).toFixed(1);
+          info.textContent = `City: ${data.city} | Avg Temp: ${avg}°C | Note: mock data shown (real use needs OpenWeatherMap API key)`;
+          canvas.style.display='block'; drawChart9(data);
+        } catch(e){ info.textContent='Error: '+e.message; }
+      };
+    </script>
+  </div>
+</div>
+
+<!-- ============================= PROGRAM 10 (OPTIONAL) ============================= -->
+<div class="program" id="p10">
+  <div class="prog-header optional">Program 10 (Optional) – Node.js EMI Calculator</div>
+  <div class="prog-body">
+    <div class="demo-box">
+      <style>
+        .emi-wrap { border:2px solid #555; border-radius:8px; overflow:hidden; max-width:380px; }
+        .emi-title { background:#444; color:white; text-align:center; padding:10px; font-weight:bold; }
+        .emi-body  { padding:16px; }
+        .emi-row   { display:grid; grid-template-columns:160px 1fr; align-items:center; gap:8px; margin:8px 0; }
+        .emi-row label { font-weight:bold; font-size:13px; }
+      </style>
+      <div class="emi-wrap">
+        <div class="emi-title">EMI Loan Calculator</div>
+        <div class="emi-body">
+          <div class="emi-row">
+            <label>Loan Amount $:</label>
+            <input type="number" id="emiP" value="16500" style="width:120px">
+          </div>
+          <div class="emi-row">
+            <label>Tenure (months):</label>
+            <input type="number" id="emiN" value="36" style="width:80px">
+          </div>
+          <div class="emi-row">
+            <label>Interest Rate %:</label>
+            <input type="number" id="emiR" step="0.01" value="5.1250" style="width:100px">
+          </div>
+          <div class="emi-row">
+            <label>Type:</label>
+            <select id="emiType"><option>In Arrears</option><option>In Advance</option></select>
+          </div>
+          <br>
+          <button onclick="calcEMI10()">Calculate</button>
+          <button onclick="clearEMI()">Clear</button>
+          <div class="result-box" id="emiResult" style="display:none;margin-top:10px;"></div>
+        </div>
+      </div>
+    </div>
+<pre>// ---- app.js (Node.js + Express) ----
+const express = require('express');
+const app = express();
+app.use(express.urlencoded({ extended: true }));
+
+// GET: Render the calculator form
+app.get('/', (req, res) =&gt; {
+  res.send(`
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+    &lt;head&gt;
+      &lt;title&gt;EMI Calculator&lt;/title&gt;
+      &lt;style&gt;
+        body { font-family: Arial; max-width: 400px; margin: 30px auto; }
+        .box { border: 2px solid #555; border-radius: 8px; overflow: hidden; }
+        .header { background: #444; color: white; text-align: center; padding: 10px; font-weight: bold; }
+        .body { padding: 16px; }
+        .row { display: flex; justify-content: space-between; align-items: center; margin: 8px 0; }
+        input, select { padding: 6px; width: 150px; }
+        button { padding: 8px 18px; margin: 4px; cursor: pointer; }
+        .result { margin-top: 12px; padding: 10px; background: #eaf4fb; border-radius: 4px; font-size: 16px; }
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;div class="box"&gt;
+        &lt;div class="header"&gt;EMI Loan Calculator&lt;/div&gt;
+        &lt;div class="body"&gt;
+          &lt;form method="POST" action="/calculate"&gt;
+            &lt;div class="row"&gt;
+              &lt;label&gt;Loan Amount $:&lt;/label&gt;
+              &lt;input type="number" name="P" step="0.01" required&gt;
+            &lt;/div&gt;
+            &lt;div class="row"&gt;
+              &lt;label&gt;Tenure (months):&lt;/label&gt;
+              &lt;input type="number" name="n" required&gt;
+            &lt;/div&gt;
+            &lt;div class="row"&gt;
+              &lt;label&gt;Interest Rate %:&lt;/label&gt;
+              &lt;input type="number" name="r" step="0.0001" required&gt;
+            &lt;/div&gt;
+            &lt;div class="row"&gt;
+              &lt;label&gt;Type:&lt;/label&gt;
+              &lt;select name="type"&gt;
+                &lt;option&gt;In Arrears&lt;/option&gt;
+                &lt;option&gt;In Advance&lt;/option&gt;
+              &lt;/select&gt;
+            &lt;/div&gt;
+            &lt;br&gt;
+            &lt;button type="submit"&gt;Calculate&lt;/button&gt;
+            &lt;button type="reset"&gt;Clear&lt;/button&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+  `);
+});
+
+// POST: Compute EMI and show result
+app.post('/calculate', (req, res) =&gt; {
+  const P = parseFloat(req.body.P);
+  const n = parseInt(req.body.n);
+  const r = parseFloat(req.body.r) / 100 / 12;   // monthly interest rate
+
+  // EMI Formula: E = P * r * (1+r)^n / ((1+r)^n - 1)
+  const E = P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+  const total    = E * n;
+  const interest = total - P;
+
+  res.send(`
+    &lt;!DOCTYPE html&gt;&lt;html&gt;&lt;body style="font-family:Arial;max-width:400px;margin:30px auto"&gt;
+    &lt;h2&gt;EMI Result&lt;/h2&gt;
+    &lt;table border="1" cellpadding="8" style="border-collapse:collapse;width:100%"&gt;
+      &lt;tr&gt;&lt;td&gt;Monthly EMI&lt;/td&gt;&lt;td&gt;&lt;b&gt;$${E.toFixed(2)}&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;Total Payment&lt;/td&gt;&lt;td&gt;$${total.toFixed(2)}&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;Total Interest&lt;/td&gt;&lt;td&gt;$${interest.toFixed(2)}&lt;/td&gt;&lt;/tr&gt;
+    &lt;/table&gt;
+    &lt;br&gt;&lt;a href="/"&gt;← Back&lt;/a&gt;
+    &lt;/body&gt;&lt;/html&gt;
+  `);
+});
+
+app.listen(3000, () =&gt; console.log('Server running at http://localhost:3000'));
+
+// ---- Run: ----
+// npm install express
+// node app.js</pre>
+    <script>
+      function calcEMI10() {
+        var P=parseFloat(document.getElementById('emiP').value);
+        var n=parseInt(document.getElementById('emiN').value);
+        var r=parseFloat(document.getElementById('emiR').value)/100/12;
+        var E = P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+        var total=E*n, interest=total-P;
+        var el=document.getElementById('emiResult');
+        el.style.display='block';
+        el.innerHTML='Monthly Payment: <b>$'+E.toFixed(2)+'</b><br>'+
+          'Total Payment: $'+total.toFixed(2)+'<br>'+
+          'Total Interest: $'+interest.toFixed(2);
+      }
+      function clearEMI(){document.getElementById('emiResult').style.display='none';}
+    </script>
+  </div>
+</div>
+
+<!-- ============================= PROGRAM 18 (OPTIONAL) ============================= -->
+<div class="program" id="p18">
+  <div class="prog-header optional">Program 18 (Optional) – Weather App with Graph (Full ES6: Async/Await, Promises, Callbacks, Arrow Functions)</div>
+  <div class="prog-body">
+    <div class="demo-box">
+      <p><b>Note:</b> Replace <code>YOUR_API_KEY</code> with a valid OpenWeatherMap key for live data. Demo below uses mock data.</p>
+      <input type="text" id="city18" value="Mumbai" style="width:180px">
+      <button class="btn-green" onclick="loadWeather18()">▶ Fetch Forecast</button>
+      <div class="result-box" id="w18info" style="display:none;margin-bottom:10px;"></div>
+      <canvas id="w18canvas" width="540" height="240" style="display:none;border:1px solid #ddd;border-radius:6px;margin-top:8px;"></canvas>
+    </div>
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Weather App – ES6&lt;/title&gt;
+  &lt;style&gt;
+    body { font-family: Arial; max-width: 600px; margin: 20px auto; }
+    input  { padding: 7px; margin-right: 6px; border: 1px solid #ccc; border-radius: 4px; }
+    button { padding: 8px 18px; background: #27ae60; color: white;
+             border: none; border-radius: 4px; cursor: pointer; }
+    canvas { display: none; margin-top: 10px; border: 1px solid #ccc; border-radius: 6px; }
+    #info  { margin: 10px 0; font-weight: bold; color: #2c3e50; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;🌤 Weather Forecast&lt;/h2&gt;
+  &lt;input type="text" id="city" placeholder="Enter city" value="Mumbai"&gt;
+  &lt;button onclick="loadWeather()"&gt;Fetch Forecast&lt;/button&gt;
+  &lt;div id="info"&gt;&lt;/div&gt;
+  &lt;canvas id="chart" width="540" height="240"&gt;&lt;/canvas&gt;
+
+  &lt;script&gt;
+    const API_KEY = 'YOUR_API_KEY';
+
+    // --- Arrow function returning a Promise ---
+    const fetchWeatherData = (city) =&gt; {
+      const url =
+        `https://api.openweathermap.org/data/2.5/forecast` +
+        `?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric&cnt=7`;
+      return fetch(url).then(res =&gt; {
+        if (!res.ok) throw new Error('City not found');
+        return res.json();
+      });
+    };
+
+    // --- Callback: transforms raw API data into chart-ready format ---
+    const extractChartData = (json, callback) =&gt; {
+      const labels = json.list.map(item =&gt;
+        new Date(item.dt * 1000).toLocaleDateString('en-US', { weekday: 'short' })
+      );
+      const temps = json.list.map(item =&gt; item.main.temp);
+      const desc  = json.list.map(item =&gt; item.weather[0].description);
+      callback({ city: json.city.name, labels, temps, desc });
+    };
+
+    // --- Canvas bar chart ---
+    const drawBarChart = (data) =&gt; {
+      const canvas = document.getElementById('chart');
+      const ctx = canvas.getContext('2d');
+      const W = canvas.width, H = canvas.height;
+      const barW = 52, gap = 24, startX = 40;
+
+      ctx.clearRect(0, 0, W, H);
+
+      // Background gradient
+      const bg = ctx.createLinearGradient(0, 0, 0, H);
+      bg.addColorStop(0, '#e8f4f8');
+      bg.addColorStop(1, '#ffffff');
+      ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+      // Title
+      ctx.fillStyle = '#2c3e50'; ctx.font = 'bold 14px Arial';
+      ctx.fillText('7-Day Temperature (°C) – ' + data.city, 10, 22);
+
+      // Y-axis grid lines
+      ctx.strokeStyle = '#ddd'; ctx.lineWidth = 1;
+      for (let i = 0; i &lt;= 4; i++) {
+        const y = 40 + i * 40;
+        ctx.beginPath(); ctx.moveTo(30, y); ctx.lineTo(W - 10, y); ctx.stroke();
+      }
+
+      // Bars
+      data.labels.forEach((label, i) =&gt; {
+        const temp = data.temps[i];
+        const x = startX + i * (barW + gap);
+        const barH = Math.max(temp * 5, 10);
+        const y = H - barH - 36;
+
+        // Bar gradient
+        const grad = ctx.createLinearGradient(x, y, x, y + barH);
+        grad.addColorStop(0, `hsl(${210 - i*10}, 75%, 55%)`);
+        grad.addColorStop(1, `hsl(${210 - i*10}, 75%, 35%)`);
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.roundRect(x, y, barW, barH, 4);
+        ctx.fill();
+
+        // Temp label on top of bar
+        ctx.fillStyle = '#1a252f'; ctx.font = 'bold 12px Arial';
+        ctx.fillText(temp.toFixed(1) + '°', x + 6, y - 6);
+
+        // Day label at bottom
+        ctx.fillStyle = '#555'; ctx.font = '12px Arial';
+        ctx.fillText(label, x + 10, H - 16);
+      });
+
+      canvas.style.display = 'block';
+    };
+
+    // --- Main async/await function ---
+    const loadWeather = async () =&gt; {
+      const city = document.getElementById('city').value.trim();
+      const info = document.getElementById('info');
+      if (!city) { alert('Please enter a city name.'); return; }
+
+      info.textContent = 'Fetching weather data...';
+
+      try {
+        // await the Promise returned by fetchWeatherData
+        const json = await fetchWeatherData(city);
+
+        // Pass result to callback
+        extractChartData(json, (data) =&gt; {
+          const avgTemp = (data.temps.reduce((a, b) =&gt; a + b, 0) / data.temps.length).toFixed(1);
+          info.textContent =
+            `📍 ${data.city}  |  Avg: ${avgTemp}°C  |  ${data.desc[0]}`;
+          drawBarChart(data);
+        });
+
+      } catch (err) {
+        // If no API key, show mock data
+        console.warn('API error, using mock data:', err.message);
+        const mockData = {
+          city: city + ' (mock)',
+          labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+          temps: [31, 34, 29, 27, 32, 36, 30],
+          desc: ['clear sky']
+        };
+        const avg = (mockData.temps.reduce((a,b)=&gt;a+b,0)/7).toFixed(1);
+        info.textContent = `📍 ${mockData.city}  |  Avg: ${avg}°C  |  (mock data – add API key for real data)`;
+        drawBarChart(mockData);
+      }
+    };
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    <script>
+      const drawBarChart18 = (data) => {
+        const canvas=document.getElementById('w18canvas'), ctx=canvas.getContext('2d');
+        const W=canvas.width,H=canvas.height,barW=52,gap=24,startX=40;
+        ctx.clearRect(0,0,W,H);
+        const bg=ctx.createLinearGradient(0,0,0,H);
+        bg.addColorStop(0,'#e8f4f8');bg.addColorStop(1,'#ffffff');
+        ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+        ctx.fillStyle='#2c3e50';ctx.font='bold 14px Arial';
+        ctx.fillText('7-Day Temperature (°C) – '+data.city,10,22);
+        ctx.strokeStyle='#ddd';ctx.lineWidth=1;
+        for(let i=0;i<=4;i++){const y=40+i*40;ctx.beginPath();ctx.moveTo(30,y);ctx.lineTo(W-10,y);ctx.stroke();}
+        data.labels.forEach((label,i)=>{
+          const temp=data.temps[i],x=startX+i*(barW+gap),barH=Math.max(temp*5,10),y=H-barH-36;
+          const grad=ctx.createLinearGradient(x,y,x,y+barH);
+          grad.addColorStop(0,`hsl(${210-i*10},75%,55%)`);
+          grad.addColorStop(1,`hsl(${210-i*10},75%,35%)`);
+          ctx.fillStyle=grad;
+          if(ctx.roundRect){ctx.beginPath();ctx.roundRect(x,y,barW,barH,4);ctx.fill();}
+          else{ctx.fillRect(x,y,barW,barH);}
+          ctx.fillStyle='#1a252f';ctx.font='bold 12px Arial';
+          ctx.fillText(temp.toFixed(1)+'°',x+6,y-6);
+          ctx.fillStyle='#555';ctx.font='12px Arial';
+          ctx.fillText(label,x+10,H-16);
+        });
+        canvas.style.display='block';
+      };
+      const loadWeather18 = async () => {
+        const city=document.getElementById('city18').value.trim();
+        const info=document.getElementById('w18info');
+        if(!city){alert('Enter a city!');return;}
+        info.style.display='block';info.textContent='Loading...';
+        const mockData={
+          city:city+' (mock data)',
+          labels:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+          temps:[31,34,29,27,32,36,30],
+          desc:['clear sky']
+        };
+        await new Promise(r=>setTimeout(r,400));
+        const avg=(mockData.temps.reduce((a,b)=>a+b,0)/7).toFixed(1);
+        info.textContent=`📍 ${mockData.city} | Avg: ${avg}°C | Real data needs OpenWeatherMap API key`;
+        drawBarChart18(mockData);
+      };
+    </script>
+  </div>
+</div>
+
+</body>
+</html>
